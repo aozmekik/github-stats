@@ -25,12 +25,21 @@ jobs:
         python-version: '3.8'
         architecture: 'x64'
         cache: 'pip'
+      
 
+    - name: Git pull to avoid error
+      run: |
+        git config --global user.name "aozmekik/github-stats"
+        git config --global user.email "github-stats[bot]@jstrieb.github.io"
+        git pull
+        
     # Install dependencies with `pip`
     - name: Install requirements
       run: |
         python3 -m pip install --upgrade pip setuptools wheel
         python3 -m pip install -r requirements.txt
+
+   
 
     # Generate all statistics images
     - name: Generate images
